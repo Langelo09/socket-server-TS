@@ -1,4 +1,4 @@
-import Server from "./classes/server";
+import Server from './classes/server';
 //Importar la configuración de las variables globales
 import { SERVER_PORT } from "./global/enviroment";
 import router from "./routes/router";
@@ -10,7 +10,8 @@ import cors from 'cors';
 
 // Manejo y Configuración del servidor y de sockets
 
-const server = new Server();
+//se llama la instancia si ya existe no lo crea, de lo contrario crea la instancia [SINGLETON]
+const server = Server.instance;
 
 //BodyParser - Leer la URL para obtener información (Middleware)
 server.app.use(bodyParser.urlencoded( {extended: true}) );
