@@ -50,18 +50,26 @@ export default class Server {
 
         console.log('Escuchando conexiones - sockets');
 
-        //Escuchar cduando una persona se conecta a la app mediante sockets
+        //Escuchar cuando una persona se conecta a la app mediante sockets
         this.io.on('connection', cliente => {
         
-            console.log('Cliente conectado');
+            // console.log('Cliente conectado');
+            console.log(cliente.id);
 
             // Lógica en el archivo sockets.ts
+
+            //Conectar cliente
+            socket.conectarCliente(cliente);
+            
+            // Configurar Usuario
+            socket.configurarUsuario(cliente, this.io);
 
             //Mensajes
             socket.mensaje(cliente, this.io);
 
             //DESCONECTAR
             socket.desconectar(cliente);
+
 
         });
 
