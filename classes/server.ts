@@ -59,16 +59,19 @@ export default class Server {
             // Lógica en el archivo sockets.ts
 
             //Conectar cliente
-            socket.conectarCliente(cliente);
+            socket.conectarCliente(cliente, this.io);
             
             // Configurar Usuario
             socket.configurarUsuario(cliente, this.io);
+
+            // Obtener usuarios activos
+            socket.obtenerUsuario(cliente, this.io);
 
             //Mensajes
             socket.mensaje(cliente, this.io);
 
             //DESCONECTAR
-            socket.desconectar(cliente);
+            socket.desconectar(cliente, this.io);
 
 
         });
